@@ -95,12 +95,3 @@ class Input:
         print('correct: ' + str(len(testClasses) - err) + '/' + str(len(testClasses)))
         return err
         
-        
-    
-    
-    
-    
-    
-    
-    
-        
