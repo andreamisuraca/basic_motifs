@@ -121,17 +121,3 @@ class Sax:
             if len(time_serie[i:i+windowSize]) == windowSize:
                 s.append(self.discretize(time_serie[i:i+windowSize]))
         return s
-
-
-
-
-
-
-
-
-
-
-
-
-
-
