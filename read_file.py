@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import sax
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
+
+import numpy
 
 class Input:
     
@@ -78,6 +82,7 @@ class Input:
         valuesTest = []
         myClasses = []
         err = 0
+        i=0
         
         with open(filename, encoding='utf-8') as file_in:
             for line in file_in:
@@ -86,12 +91,20 @@ class Input:
                 line = line.replace('\n', '')
                 valuesTest = line.split(',')
                 del valuesTest[0]
+                
+                valuesTest2 = [float(j) for j in valuesTest]
+                plt.plot(valuesTest2)
+                
                 a = self.saxVar.discretize(valuesTest)
+                
+                plt.title(a)
+                plt.show()
+                
                 myClasses.append(self.test(bow, a))
         for i in range(0, len(testClasses)):
             if testClasses[i] != myClasses[i]:
                 err += 1
-        print('err: ' + str(err) + '/' + str(len(testClasses)))
+        print('\nerr: ' + str(err) + '/' + str(len(testClasses)))
         print('correct: ' + str(len(testClasses) - err) + '/' + str(len(testClasses)))
         return err
         
